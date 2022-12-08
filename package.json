@@ -11,6 +11,7 @@
     "express": "^4.13.4",
     "mongoose": "^6.8.0",
     "morgan": "^1.10.0",
+    "nyc": "^15.1.0",
     "open": "^8.4.0",
     "yarn": "^1.22.19"
   },
@@ -21,7 +22,8 @@
   },
   "scripts": {
     "start": "set NODE_ENV=dev && node server.js",
-    "test": "mocha --timeout 10000"
+    "tests": "mocha --timeout 10000",
+    "test": "nyc mocha --recursive  ./test/*.js --timeout 500000000 --exit"
   },
   "repository": "https://github.com/kclaudeeager/Bookmark_backend.git"
 }
