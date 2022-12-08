@@ -12,12 +12,6 @@ let options = {
                 replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } 
               }; 
 
-//db connection      
-// mongoose.connect(config.DBHost, options);
-// let db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-
-
 const connectDB = async () => {
     try {
         await mongoose.connect(config.DBHost, {

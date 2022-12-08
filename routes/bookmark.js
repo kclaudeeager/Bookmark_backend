@@ -7,10 +7,10 @@ let Bookmark = require("../models/bookmark");
 function getBookmarks(req, res) {
   //Query the DB and if no errors, send all the books
   let query = Bookmark.find({});
-  query.exec((err, bookmark) => {
+  query.exec((err, bookmarks) => {
     if (err) res.send(err);
     //If no errors, send them back to the client
-    res.json(bookmark);
+    res.json(bookmarks);
   });
 }
 
@@ -38,7 +38,7 @@ function getBookmark(req, res) {
   Bookmark.findById(req.params.id, (err, bookmark) => {
     if (err) res.send(err);
     //If no errors, send it back to the client
-    res.json(bookmark);
+    res.json({"bookmark":bookmark});
   });
 }
 
@@ -46,7 +46,7 @@ function getBookmark(req, res) {
  * DELETE /book/:id to delete a book given its id.
  */
 function deleteBookmark(req, res) {
-  Bookmark.remove({ _id: req.params.id }, (err, result) => {
+  Bookmark.deleteOne({ _id: req.params.id }, (err, result) => {
     if (err) res.send(err);
     res.json({ message: "Bookmark successfully deleted!", result });
   });
@@ -60,7 +60,7 @@ function updateBookmark(req, res) {
     if (err) res.send(err);
     Object.assign(bookmark, req.body).save((err, bookmark) => {
       if (err) res.send(err);
-      res.json({ message: "Booknark updated!", bookmark });
+      res.json({ message: "Bookmark updated!", bookmark });
     });
   });
 }

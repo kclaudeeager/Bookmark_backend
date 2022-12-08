@@ -1,1 +1,1 @@
-{ "DBHost": "YOUR_TEST_DB_URI" }
+{ "DBHost": "mongodb://Kclaude:Kwizeraeager@localhost:27017/Bookmarks_test?authSource=admin" }
